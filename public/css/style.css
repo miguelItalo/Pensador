@@ -31,6 +31,10 @@
 #navbar ul li{
 	margin-left: 1.5rem;
 }
+#navbar ul li:hover{
+	color: var(--blue);
+	transform: scale(1.1);
+}
 #navbar ul li a{
 	text-decoration: none;
 	font-weight: bold;
@@ -38,6 +42,17 @@
 }
 #navbar ul li a:hover{
 	color: var(--blue);
+}
+/* MESSAGE */
+.message{
+	padding: 1rem;
+	color: var(--blue);
+	background-color: var(--white);
+	border: 1px solid var(--blue);
+	border-radius: .5rem;
+	text-align: center;
+	margin: 0 auto 2rem;
+	max-width: 60%;
 }
 /* CONTAINER */
 .container{
@@ -54,4 +69,52 @@ footer{
 footer span{
 	font-weight: bold;
 	color: var(--blue);
+}
+.auth-container{
+	width: 30%;
+	margin: auto;
+}
+.auth-container h2{
+	font-size: 30px;
+	margin-bottom: 1rem;
+	padding-left: 1rem;
+	border-left: 6px solid var(--blue);
+}
+.auth-container form{
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+.auth-container form .form-control{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 5px;
+}
+.auth-container form .form-control input{
+	height: 44px;
+	border: 1px solid var(--white);
+	padding: 0.5rem;
+	outline: none;
+	transition: .25s;
+}
+.auth-container form .form-control input:focus{
+	border-color: var(--blue);
+}
+.auth-container form a{
+	text-decoration: underline;
+	color: var(--blue);
+}
+.auth-container form .form-control label{
+	font-size: 16px;
+	font-weight: bold;
+}
+.auth-container form input[type="submit"]{
+	background-color: transparent;
+	border: 2px solid var(--blue);
+	padding: 10px 27px;
+	width: 30%;
+	color: var(--blue);
+	font-weight: bold;
+	font-size: 20px;
 }

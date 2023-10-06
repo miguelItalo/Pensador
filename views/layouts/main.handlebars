@@ -24,6 +24,12 @@
 	</nav>
 
 	<div class="container">
+		{{!-- criando as flash message --}}
+		{{#if messages.message}}
+			<section class="message">
+				{{ messages.message }}
+			</section>
+		{{/if}}
 		{{{ body }}}
 	</div>
 

@@ -11,7 +11,8 @@ const User = require('./models/User');
 const Thoughts = require('./models/Thoughts');
 
 // Import rotas
-const thoughtsRoutes = require('./routes/thoughtsRoutes');
+const thoughtsRoutes = require('./routes/thoughtsRouters');
+const authRoutes = require('./routes/authRouters');
 
 // Import Controller
 const ThoughtsController = require('./controllers/ThoughtsController')
@@ -61,8 +62,11 @@ app.use((req, res, next) => {
 // Rotas
 
 app.use('/thoughts', thoughtsRoutes);
+app.use('/', authRoutes);
 
 app.get('/', ThoughtsController.showThoughts)
+// app.get('/', authController.login)
+// app.get('/', authController.register)
 
 // Conexão e criação das tabelas do banco
 

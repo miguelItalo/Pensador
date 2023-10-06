@@ -3,17 +3,18 @@ const exphbs = require('express-handlebars');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const flash = require('express-flash');
-
 const app = express();
-
 const conn = require('./db/conn');
 
 // import Models
-const User = require('./models/User')
-const Thoughts = require('./models/Thoughts')
+const User = require('./models/User');
+const Thoughts = require('./models/Thoughts');
+
 // Import rotas
+const thoughtsRoutes = require('./routes/thoughtsRoutes');
 
 // Import Controller
+const ThoughtsController = require('./controllers/ThoughtsController')
 
 // Configurar engine
 app.engine('handlebars', exphbs.engine());
@@ -59,13 +60,17 @@ app.use((req, res, next) => {
 
 // Rotas
 
+app.use('/thoughts', thoughtsRoutes);
+
+app.get('/', ThoughtsController.showThoughts)
+
 // Conexão e criação das tabelas do banco
 
 conn
 	.sync()
 	.then(() => {
 		app.listen(9999, () => {
-			console.log(`http://localhost:9999`)
+			console.log(`http://localhost:9999`);
 		});
 	})
 	.catch((err) => console.log(err));

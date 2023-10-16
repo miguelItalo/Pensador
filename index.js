@@ -60,7 +60,6 @@ app.use((req, res, next) => {
 });
 
 // Rotas
-
 app.use('/thoughts', thoughtsRoutes);
 app.use('/', authRoutes);
 

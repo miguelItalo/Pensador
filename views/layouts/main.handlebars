@@ -14,12 +14,15 @@
 			<li>
 				<a href="/">Pensamentos</a>
 			</li>
-			<li>
-				<a href="/login">Entrar</a>
-			</li>
-			<li>
-				<a href="/register">Registrar</a>
-			</li>
+
+			{{#if session.userId}}
+				<li><a href="/thoughts/dashboard">Dashboard</a></li>
+				<li><a href="/logout">Logout</a></li>
+			{{else}}
+				<li><a href="/login">Entrar</a></li>
+				<li><a href="/register">Registrar</a></li>
+			{{/if}}
+
 		</ul>
 	</nav>
 

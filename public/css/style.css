@@ -117,4 +117,10 @@ footer span{
 	color: var(--blue);
 	font-weight: bold;
 	font-size: 20px;
+	cursor: pointer;
+	transition: .5s;
+}
+.auth-container form input[type="submit"]:hover{
+	background-color: var(--blue);
+	color: var(--white);
 }

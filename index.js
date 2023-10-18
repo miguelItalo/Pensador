@@ -64,11 +64,8 @@ app.use('/thoughts', thoughtsRoutes);
 app.use('/', authRoutes);
 
 app.get('/', ThoughtsController.showThoughts)
-// app.get('/', authController.login)
-// app.get('/', authController.register)
 
 // Conexão e criação das tabelas do banco
-
 conn
 	.sync()
 	.then(() => {

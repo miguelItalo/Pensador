@@ -4,4 +4,26 @@
 		<a href="/thoughts/add" class="btn">Criar Pensamentos</a>
 	</section>
 	<h3>Seus Pensamentos</h3>
+	<ul>
+		{{#if emptyThoughts}}
+			<p class="emptyThoughts">Ainda não existe pensamentos, comece a criar <a href="/thoughts/add">Por aqui</a></p>
+		{{/if}}
+		{{#each thoughts}}
+			<li>
+				<p>{{this.title}}</p>
+
+				<section class="actions">
+					<form action="/thoughts/edit" method="post">
+						<input type="hidden" name="id" value={{this.id}}>
+						<input type="submit" value="Editar">
+					</form>
+					<form action="/thoughts/delete" method="post">
+						<input type="hidden" name="id" value={{this.id}}>
+						<input type="submit" value="Excluir">
+					</form>
+				</section>
+
+			</li>
+		{{/each}}
+	</ul>
 </section>

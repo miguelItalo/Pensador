@@ -1,0 +1,9 @@
+<section class="edit-container">
+	<h2>Editar Pensamento:</h2>
+		<form action="/thoughts/editSave" method="post">
+			<label for="title">Titulo:</label>
+			<input type="text" name="title" value={{thought.title}}>
+			<input type="hidden" name="id" value={{thought.id}}>
+			<input type="submit" value="Editar Pensamento">
+		</form>
+</section>

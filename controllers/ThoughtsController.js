@@ -1,9 +1,12 @@
 const Thoughts = require('../models/Thoughts')
 const User = require('../models/User')
+const { Op } = require('sequelize')
 
 module.exports = class ThoughtsController {
 	static async showThoughts(req, res){
-		return res.render('thoughts/home')
+		const thoughtsData = await Thoughts.findAll({ include: User })
+		const thoughts = thoughtsData.map(result => result.get({plain: true}))
+		return res.render('thoughts/home', { thoughts })
 	}
 	static async dashboard(req, res){
 		const userId = req.session.userId
@@ -95,5 +98,22 @@ module.exports = class ThoughtsController {
 		} catch(err){
 			console.log(err)
 		}
+	}
+	static async search(req, res){
+		const searchInput = req.query.searchInput
+		const thoughtsData = await Thoughts.findAll({ where: { title: { [Op.like]: `%${searchInput}%` } }, include: User })
+		const thoughts = thoughtsData.map(result => result.get({plain: true}))
+
+		return res.render('thoughts/home', { thoughts })
+	}
+	static async orderDesc(req, res){
+		const orderThoughtsData = await Thoughts.findAll({ order: [['createdAt', 'desc']], include: User })
+		const orderThoughts = orderThoughtsData.map(result => result.get({ plain: true }))
+		return res.render('thoughts/home', { thoughts: orderThoughts })
+	}
+	static async orderAsc(req, res){
+		const orderThoughtsData = await Thoughts.findAll({ order: [['createdAt', 'asc']], include: User })
+		const orderThoughts = orderThoughtsData.map(result => result.get({ plain: true }))
+		return res.render('thoughts/home', { thoughts: orderThoughts })
 	}
 }

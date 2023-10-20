@@ -13,6 +13,9 @@ router.post('/add', checkAuth, ThoughtsController.createThoughtsSave)
 router.post('/delete', checkAuth, ThoughtsController.deleteThoughts)
 router.post('/edit', checkAuth, ThoughtsController.editThoughts)
 router.post('/editSave', checkAuth, ThoughtsController.editThoughtsSave)
+router.get('/orderDesc', checkAuth, ThoughtsController.orderDesc)
+router.get('/orderAsc', checkAuth, ThoughtsController.orderAsc)
+router.get('/search', checkAuth, ThoughtsController.search)
 router.get('/', ThoughtsController.showThoughts)
 
 module.exports = router

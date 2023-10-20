@@ -1,0 +1,39 @@
+<section class="home-header">
+	<h1>Todos os pensamentos</h1>
+
+	<form action="/thoughts/search" method="get">
+		<input type="text" name="searchInput" placeholder="Esta buscando algo?">
+		<input type="submit" class="btn" value="Buscar">
+	</form>
+	<div class="order-container">
+		<span>Ordenar por:</span>
+
+		<form action="/thoughts/orderAsc" method="get">
+			<input type="hidden" name="search" value="{{ this.search }}">
+			<input type="hidden" name="order" value="new">
+			<button type="submit">
+				<i class="bi bi-arrow-up"></i>
+				Mais novos
+			</button>
+		</form>
+
+		<form action="/thoughts/orderDesc" method="get">
+			<input type="hidden" name="search" value="{{ this.search }}">
+			<input type="hidden" name="order" value="old">
+			<button type="submit">
+				<i class="bi bi-arrow-down"></i>
+				Mais antigos
+			</button>
+		</form>
+
+		<a href="/">Limpar</a>
+	</div>
+</section>
+<section class="thoughts-container">
+	{{#each thoughts}}
+	<figure>
+		<blockquote>"{{this.title}}"</blockquote>
+		<figcaption>por: <span>{{this.User.name}}</span></figcaption>
+	</figure>
+	{{/each}}
+</section>
